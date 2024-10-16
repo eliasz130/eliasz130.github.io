@@ -8,26 +8,80 @@
 
 	<!-- CSS Imports -->
 	<link href="style.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 	<link href="https://fonts.googleapis.com/css?family=Acme|Audiowide|Kelly+Slab" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
 
 	<!-- JS Imports -->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+	<style>
+		body {
+			font-family: 'Acme', sans-serif;
+		}
+
+		.w3-black {
+			background-color: #111 !important;
+		}
+
+		.header-section {
+			height: 250px;
+			background-color: #333;
+			color: #fff;
+			border-radius: 15px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 0 100px;
+		}
+
+		.header-section h1 {
+			font-family: 'Audiowide', sans-serif;
+		}
+
+		.header-section img {
+			border-radius: 50%;
+			border: 4px solid #fff;
+		}
+
+		.projects-section, .social-media-section {
+			padding: 50px 100px;
+		}
+
+		.section-title {
+			font-family: 'Audiowide', sans-serif;
+			color: #00bcd4;
+		}
+
+		.w3-ul a {
+			color: #00bcd4;
+			text-decoration: none;
+		}
+
+		.w3-ul a:hover {
+			color: #fff;
+			background-color: #00bcd4;
+		}
+
+		.footer {
+			text-align: center;
+			padding: 20px;
+			background-color: #222;
+			color: #888;
+		}
+	</style>
 </head>
 
 <body class="w3-black">
-	
+
 	<!-- Header -->
-	<header class="w3-display-container w3-padding-32 w3-center w3-round-xlarge" id="home" style="height: 250px; background-color: #111;">
-		<div class="w3-display-left" style="padding-left: 100px;">
-			<img src="https://avatars.githubusercontent.com/u/117379918?v=4" alt="Elias Z" class="w3-image w3-circle w3-hide-small" height="200" width="200">
-		</div>
-		<div class="w3-display-right" style="padding-right: 100px;">
-			<h1 class="w3-jumbo acme">I'm <u>Elias Z</u></h1>
+	<header class="header-section w3-round-xlarge">
+		<img src="https://avatars.githubusercontent.com/u/117379918?v=4" alt="Elias Z" height="200" width="200">
+		<div>
+			<h1>I'm <u>Elias Z</u></h1>
 			<p>Cybersecurity enthusiast and HS student</p>
 		</div>
 	</header>
@@ -35,23 +89,32 @@
 	<hr>
 
 	<!-- Projects Section -->
-	<h1 class="audiowide"><u>My Projects</u></h1>
-	<ul class="w3-ul w3-border">
-		<li><a href="https://github.com/eliasz130/portscanner">Port Scanner</a></li>
-		<li><a href="https://github.com/eliasz130/scanner">System Scanner (In Progress)</a></li>
-	</ul>
+	<section class="projects-section">
+		<h1 class="section-title"><u>My Projects</u></h1>
+		<ul class="w3-ul w3-border w3-hoverable">
+			<li><a href="https://github.com/eliasz130/portscanner">Port Scanner</a></li>
+			<li><a href="https://github.com/eliasz130/scanner">System Scanner (In Progress)</a></li>
+		</ul>
+	</section>
 
 	<hr>
 
 	<!-- Social Media Section -->
-	<h1 class="audiowide"><u>My Social Medias</u></h1>
-	<ul class="w3-ul w3-border">
-		<li><a href="https://github.com/eliasz130">GitHub</a></li>
-		<li><a href="mailto:eliaspublic@icloud.com">Email Me</a></li>
-		<li><a href="https://app.hackthebox.com/profile/1515990">HTB</a></li>
-	</ul>
+	<section class="social-media-section">
+		<h1 class="section-title"><u>My Social Media</u></h1>
+		<ul class="w3-ul w3-border w3-hoverable">
+			<li><a href="https://github.com/eliasz130">GitHub</a></li>
+			<li><a href="mailto:eliaspublic@icloud.com">Email Me</a></li>
+			<li><a href="https://app.hackthebox.com/profile/1515990">HTB</a></li>
+		</ul>
+	</section>
 
 	<hr>
+
+	<!-- Footer -->
+	<footer class="footer">
+		<p>&copy; 2024 Elias Z. All Rights Reserved.</p>
+	</footer>
 
 </body>
 
