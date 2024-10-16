@@ -1,4 +1,4 @@
-html, body {
+/*html, body {
 	height: 100%;
 	width: 100%;
 }
@@ -13,7 +13,7 @@ body {
 	padding: 75px 50px 0;
 }
 
-/* Font family styles */
+/* Font family styles 
 .acme, body {
 	font-family: 'Acme', sans-serif;
 }
@@ -26,7 +26,7 @@ body {
 	font-family: 'Kelly Slab', sans-serif;
 }
 
-/* Text colors */
+/* Text colors 
 .red {
 	color: red;
 }
@@ -36,7 +36,7 @@ a {
 	text-decoration: none;
 }
 
-/* Utility styles */
+/* Utility styles 
 .w3-bar-item {
 	margin-right: 12px;
 }
@@ -53,3 +53,4 @@ a {
 	padding: 2px 4px;
 	background-color: #333;
 }
+*/
