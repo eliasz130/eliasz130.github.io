@@ -6,29 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Elias' Portfolio</title>
     <style>
+        :root {
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --header-background: #333;
+            --header-text-color: white;
+            --link-color: #3498db;
+        }
+
+        /* Dark mode variables */
+        [data-theme="dark"] {
+            --background-color: #121212;
+            --text-color: #e0e0e0;
+            --header-background: #1e1e1e;
+            --header-text-color: #f1f1f1;
+            --link-color: #64b5f6;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: var(--background-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
         }
+
         header {
-            background-color: #333;
-            color: white;
+            background-color: var(--header-background);
+            color: var(--header-text-color);
             padding: 10px 0;
             text-align: center;
         }
+
         header h1 {
             margin: 0;
         }
+
+        .theme-toggle {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: var(--header-background);
+            border: none;
+            color: var(--header-text-color);
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
         .container {
             width: 80%;
             margin: 20px auto;
-            background-color: white;
+            background-color: var(--background-color);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .profile-pic {
             display: block;
             width: 150px;
@@ -36,41 +70,49 @@
             border-radius: 50%;
             margin: 0 auto;
         }
+
         .description {
             text-align: center;
             margin: 20px 0;
         }
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin: 20px 0;
         }
+
         .social-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--link-color);
             font-size: 20px;
         }
+
         .projects {
             margin-top: 40px;
         }
+
         .projects ul {
             list-style: none;
             padding: 0;
         }
+
         .projects li {
             margin: 10px 0;
         }
+
         .projects a {
             text-decoration: none;
-            color: #3498db;
+            color: var(--link-color);
         }
+
         footer {
             text-align: center;
             margin-top: 50px;
             padding: 20px;
-            background-color: #333;
-            color: white;
+            background-color: var(--header-background);
+            color: var(--header-text-color);
         }
     </style>
 </head>
@@ -78,6 +120,7 @@
 
     <header>
         <h1>Elias' Portfolio</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">Toggle Dark/Light Mode</button>
     </header>
 
     <div class="container">
@@ -110,5 +153,19 @@
         <p>© 2024 Elias' Portfolio | Designed by Elias</p>
     </footer>
 
+    <script>
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+        }
+
+        // Optional: Automatically switch based on system theme
+        const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (userPrefersDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
+    
 </body>
 </html>
