@@ -1,15 +1,23 @@
-{% extends "layout.html" %}
+{% extends "blog/layout.html" %}
 
-{% block title %}Post Detail{% endblock %}
+{% block title %}{{ post.title }} - My Blog{% endblock %}
 
 {% block content %}
-<h1>{{ post.title }}</h1>
-<p>{{ post.content }}</p>
-<small>Posted on {{ post.date }}</small>
+<article class="post-detail">
+    <header class="post-header">
+        <h1 class="post-title">{{ post.title }}</h1>
+        <div class="post-meta">
+            <span class="author">By {{ post.author }}</span>
+            <span class="date">{{ post.date }}</span>
+        </div>
+    </header>
 
-<a href="{{ url_for('home') }}">Back</a>
-<a href="{{ url_for('edit_post', post_id=post.id) }}">Edit</a>
-<form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" style="display:inline;">
-    <button type="submit">Delete</button>
-</form>
+    <div class="post-content">
+        {{ post.content|safe }}
+    </div>
+
+    <footer class="post-footer">
+        <a href="{{ url_for('home') }}" class="btn btn-back">← Back to Home</a>
+    </footer>
+</article>
 {% endblock %}

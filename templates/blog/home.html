@@ -1,31 +1,26 @@
-{% extends "layout.html" %}
+{% extends "blog/layout.html" %}
 
-{% block title %}Blog{% endblock %}
+{% block title %}Home - My Blog{% endblock %}
 
 {% block content %}
-<h1>Blog</h1>
-<a href="{{ url_for('new_post') }}">New Post</a>
+<section class="posts-section">
+    <h1 class="page-title">Welcome to Elias' Blog</h1>
 
-<ul>
-    {% for post in posts %}
-    <li>
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.content }}</p>
-        <small>Posted on {{ post.date }}</small>
-        <a href="{{ url_for('post_detail', post_id=post.id) }}">Read More</a>
-        <a href="{{ url_for('edit_post', post_id=post.id) }}">Edit</a>
-        <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" style="display:inline;">
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
-
-{% if page > 1 %}
-<a href="{{ url_for('home', page=page-1) }}">Previous</a>
-{% endif %}
-
-{% if page < total_pages %}
-<a href="{{ url_for('home', page=page+1) }}">Next</a>
-{% endif %}
+    {% if posts %}
+        <div class="posts-grid">
+            {% for post in posts %}
+            <article class="post-card">
+                <h2 class="post-title">
+                    <a href="{{ url_for('post_detail', post_id=post.id) }}">{{ post.title }}</a>
+                </h2>
+                <p class="post-meta">By {{ post.author }} on {{ post.date }}</p>
+                <p class="post-excerpt">{{ post.excerpt }}</p>
+                <a href="{{ url_for('post_detail', post_id=post.id) }}" class="read-more">Read more →</a>
+            </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-posts">No posts found.</p>
+    {% endif %}
+</section>
 {% endblock %}

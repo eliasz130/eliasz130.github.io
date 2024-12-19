@@ -1,9 +1,10 @@
-from flask import Flask, render_template, abort, request, redirect, url_for
+from flask import Flask, render_template, abort, request
 from datetime import datetime
 import json
 import os
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
 app = Flask(__name__)
@@ -62,51 +63,17 @@ def post_detail(post_id):
     return render_template('blog/post_detail.html', post=post)
 
 
-@app.route('/blog/new', methods=['GET', 'POST'])
-def new_post():
-    """Create a new blog post."""
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-        date = datetime.now().isoformat()
-        posts = load_posts()
-        new_id = max(post['id'] for post in posts) + 1 if posts else 1
-        new_post = {'id': new_id, 'title': title, 'content': content, 'date': date}
-        posts.append(new_post)
-        save_posts(posts)
-        return redirect(url_for('home'))
-    return render_template('new_post.html')
+@app.route('/blog/about')
+def about():
+    """Render the About page."""
+    return render_template('blog/about.html')
 
 
-@app.route('/blog/edit/<int:post_id>', methods=['GET', 'POST'])
-def edit_post(post_id):
-    """Edit an existing blog post."""
-    posts = load_posts()
-    post = next((post for post in posts if post['id'] == post_id), None)
-    if post is None:
-        abort(404)
-
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
-        date = datetime.now().isoformat()
-        post['title'] = title
-        post['content'] = content
-        post['date'] = date
-        save_posts(posts)
-        return redirect(url_for('post_detail', post_id=post_id))
-
-    return render_template('edit_post.html', post=post)
+@app.context_processor
+def inject_year():
+    """Inject the current year into templates."""
+    return {'year': datetime.now().year}
 
 
-@app.route('/blog/delete/<int:post_id>', methods=['POST'])
-def delete_post(post_id):
-    """Delete a blog post."""
-    posts = load_posts()
-    post = next((post for post in posts if post['id'] == post_id), None)
-    if post is None:
-        abort(404)
-
-    posts.remove(post)
-    save_posts(posts)
-    return redirect(url_for('home'))
+if __name__ == '__main__':
+    app.run(debug=True)
