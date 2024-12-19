@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Post Detail{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<small>Posted on {{ post.date }}</small>
+
+<a href="{{ url_for('home') }}">Back</a>
+<a href="{{ url_for('edit_post', post_id=post.id) }}">Edit</a>
+<form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" style="display:inline;">
+    <button type="submit">Delete</button>
+</form>
+{% endblock %}
